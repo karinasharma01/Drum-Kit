@@ -4,11 +4,15 @@ for(var i = 0; i < document.querySelectorAll(".drum").length;i++)
     document.querySelectorAll(".drum")[i].addEventListener("click",function(){
     
         playSound(this.innerHTML);
+
+        buttonAnimations(this.innerHTML);
     });
 }
 //Detecting Keyboard Press
 document.addEventListener("keydown",function(event) {
     playSound(event.key);
+
+    buttonAnimations(event.key);
 });
 
 function playSound(key) {
@@ -45,7 +49,15 @@ function playSound(key) {
         
     }
 }
+function buttonAnimations(currentKey)
+{
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
 
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    },100);
+}
 
 
 
